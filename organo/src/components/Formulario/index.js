@@ -1,16 +1,46 @@
-import CampoTexto from '../CampoTexto/CampoTexto.js'
-import './Formulario.css'
-
+import Botao from "../Botao";
+import CampoTexto from "../CampoTexto";
+import ListaSuspensa from "../ListaSuspensa";
+import "./Formulario.css";
 
 const Formulario = () => {
-  <section className="formulario'">
-    <from>
-      <h2>Preencha os dados para criar o card do colaborador.</h2>
-			{/* aqui eu passo as propriedades que o componente vai receber lá onde eu implementei ele */}
-			<CampoTexto label="Nome" placeholder="Digite seu nome" />
-			<CampoTexto label="Cargo" placeholder="Digite seu Cargo" />
-			<CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
-		</from>
-	</section>;
-}
+	const times = [
+		"Programação",
+		"Front-End",
+		"Data Science",
+		"Devops",
+		"UX e Design",
+		"Mobile",
+		"Inovação e Gestão",
+	];
+
+    // ouvindo o evento do formulário
+    // posso colocar essa função pra chamar a função que eu quero
+	const aoSalvar = evento => {
+		evento.preventDefault();
+		console.log("Form foi submetido");
+	};
+
+	return (
+		<section className="formulario">
+			<form onSubmit={aoSalvar}>
+				<h2>Preencha os dados para criar o card do colaborador</h2>
+				<CampoTexto
+					obrigatorio={true}
+					label="Nome"
+					placeholder="Digite seu nome"
+				/>
+				<CampoTexto
+					obrigatorio={true}
+					label="Cargo"
+					placeholder="Digite seu cargo"
+				/>
+				<CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
+				<ListaSuspensa obrigatorio={true} label="Time" itens={times} />
+				<Botao>Criar Card</Botao>
+			</form>
+		</section>
+	);
+};
+
 export default Formulario;
