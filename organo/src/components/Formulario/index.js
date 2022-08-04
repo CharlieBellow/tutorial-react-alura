@@ -4,6 +4,7 @@ import ListaSuspensa from "../ListaSuspensa";
 import "./Formulario.css";
 
 const Formulario = () => {
+	// versao antiga, preciso pegar a que está na pasta do nti
 	const times = [
 		"Programação",
 		"Front-End",
